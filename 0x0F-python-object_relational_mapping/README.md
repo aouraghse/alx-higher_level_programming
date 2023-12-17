@@ -1,1 +1,2 @@
-0x0F-pys is my readme file for thon-object_relational_mapping
+This is my README FILE for :
+0x0F. Python - Object-relational mapping
