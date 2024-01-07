@@ -1,19 +1,15 @@
-#!/usr/bin/env python3
-"""
-A Python script that:
+#!/usr/bin/python3
+"""A Python script that:
 - takes in a URL,
-- sends a POST request to the URL with an email parameter,
-- and displays the body of the response.
+- sends a request to the URL and displays the value
+- of the X-Request-Id variable found in the header ofthe response.
 """
 import sys
-import requests
+import urllib.request
 
 if __name__ == "__main__":
-	url = sys.argv[1]
-	email = sys.argv[2]
+    url = sys.argv[1]
 
-	data = {'email': email}
-	response = requests.post(url, data=data)
-
-	print("Your email is: {}".format(email))
-	print(response.text)
+    request = urllib.request.Request(url)
+    with urllib.request.urlopen(request) as response:
+        print(dict(response.headers).get("X-Request-Id"))
